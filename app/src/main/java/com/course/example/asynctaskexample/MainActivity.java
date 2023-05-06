@@ -4,10 +4,9 @@ package com.course.example.asynctaskexample;
 
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -27,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView textView;
     private EditText editText;
     private ProgressDialog progDailog;
-    private String APPID = "1937c3565d027796ab90ecade26ee182";
+    private String APPID = "b137ecd77ed9d210f03a93b7af543372";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     public void open(View view){
 
         String queryString = editText.getText().toString() + "&APPID=" + APPID;
-        String url = "http://api.openweathermap.org/data/2.5/weather?q=" + queryString;
+        String url = "https://api.openweathermap.org/data/2.5/weather?q=" + queryString;
 
         new GetWeatherTask(textView, editText).execute(url);
     }
