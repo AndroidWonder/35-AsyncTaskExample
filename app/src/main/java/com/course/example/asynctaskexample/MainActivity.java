@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import org.json.JSONException;
@@ -25,7 +26,8 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView textView;
     private EditText editText;
-    private ProgressDialog progDailog;
+
+    private ProgressBar bar2;
     private String APPID = "b137ecd77ed9d210f03a93b7af543372";
 
     @Override
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         textView = (TextView) findViewById(R.id.textView);
         editText = (EditText)findViewById(R.id.editText);
+        bar2 = (ProgressBar) findViewById(R.id.progress2);
     }
 
     //when button is clicked, background thread is started
@@ -61,8 +64,7 @@ public class MainActivity extends AppCompatActivity {
         //start dialog widget
         @Override
         protected void onPreExecute(){
-            progDailog = ProgressDialog.show(MainActivity.this, "AsyncTask Demo",
-                    "Working....", true);
+            bar2.setVisibility(View.VISIBLE);
         }
 
         //runs on background thread
@@ -108,7 +110,9 @@ public class MainActivity extends AppCompatActivity {
         //takes return of background thread and places it on UI
         @Override
         protected void onPostExecute(String weather) {
-            progDailog.dismiss();
+
+            bar2.setVisibility(View.INVISIBLE);
+
             textView.setText(weather);
             editText.setText("");
         }

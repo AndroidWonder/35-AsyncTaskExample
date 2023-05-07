@@ -747,6 +747,7 @@ id notification_main_column_container
 id off
 id on
 id parentPanel
+id progress2
 id progress_circular
 id progress_horizontal
 id radio
